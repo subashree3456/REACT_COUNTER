@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{useState} from 'react';
+import Button from "./Components/Button";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+const [ count , setCount] =useState(0);
+console.log(count);
+  // console.log(useState(0));
+const updateCount = sign =>{
+let c = count;
+if(sign ==="+")
+{ setCount(c+1);
+}
+else if(sign ==="-")
+{
+  setCount(c-1);
+}
+else if(sign ==="Reset")
+{
+  setCount(0);
 }
 
-export default App;
+}
+  return(
+    <div className="app">
+      <div className="item1">
+       <Button sign="+" updateCount={updateCount}/>
+       <div className="count">
+        {count}
+       </div>
+       <Button sign="-" updateCount={updateCount}/>
+      </div>
+      <br/>
+      <br/>
+      <div className="item2">
+        <Button sign="Reset" updateCount={updateCount}/>
+      </div>    
+    </div>
+  )
+}
+
+export default App
+
+
+//usestate function will return an array
+
+//1st element namma pass pannra value , 2 nd element oru function
